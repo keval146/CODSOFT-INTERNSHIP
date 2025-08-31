@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Online Quiz Maker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">Online <b>Quiz</b> Maker</div>
+      <nav>
+        <button class="btn" data-view="home">Home</button>
+        <button class="btn" data-view="create">Create</button>
+        <button class="btn" data-view="quizzes">Quizzes</button>
+        <button class="btn" data-view="scores">Results</button>
+        <button id="authBtn" class="primary">Login</button>
+      </nav>
+    </header>
+
+    <section id="homeView" class="grid">
+      <div class="card">
+        <h2>Welcome</h2>
+        <p class="muted">Create multiple‑choice quizzes, then take them and get instant feedback with saved scores.</p>
+        <div class="row">
+          <button class="primary" data-view="create">Create a quiz</button>
+          <button class="btn" data-view="quizzes">Take a quiz</button>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Profile</h3>
+        <p class="muted">Status: <span id="authStatus" class="pill">Guest</span></p>
+        <div id="authPanel"></div>
+      </div>
+    </section>
+
+    <section id="createView" class="hidden grid">
+      <div class="card">
+        <h2>Quiz creation</h2>
+        <div class="row">
+          <div>
+            <label>Quiz title</label>
+            <input id="quizTitle" placeholder="e.g., JavaScript Basics" />
+          </div>
+          <div>
+            <label>Category</label>
+            <input id="quizCategory" placeholder="Optional" />
+          </div>
+        </div>
+        <label>Description</label>
+        <textarea id="quizDesc" rows="3" placeholder="Short description..."></textarea>
+
+        <h3 style="margin-top:14px">Questions</h3>
+        <div id="questionsWrap"></div>
+
+        <div class="row" style="margin-top:10px">
+          <button id="addQ" class="btn">Add question</button>
+          <button id="saveQuiz" class="primary">Save quiz</button>
+        </div>
+        <p class="muted">Mark the correct option with the radio beside it; each question needs 2–6 options.</p>
+      </div>
+      <div class="card">
+        <h3>Preview</h3>
+        <div id="preview"></div>
+      </div>
+    </section>
+
+    <section id="quizzesView" class="hidden grid">
+      <div class="card">
+        <h2>Available quizzes</h2>
+        <div id="quizList" class="list"></div>
+      </div>
+      <div class="card">
+        <h3>How it works</h3>
+        <ul>
+          <li>Pick a quiz, answer questions, submit, and review correct answers.</li>
+          <li>Scores and last attempts are saved per user in localStorage.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="playView" class="hidden">
+      <div class="card">
+        <div class="row" style="justify-content:space-between; align-items:center">
+          <h2 id="playTitle">Quiz</h2>
+          <div class="row" style="align-items:center">
+            <span id="playMeta" class="tag">0/0</span>
+            <span id="timer" class="tag">Timer: off</span>
+          </div>
+        </div>
+        <div id="playQuestion"></div>
+        <div class="row" style="margin-top:12px">
+          <button id="prevBtn" class="btn">Prev</button>
+          <button id="nextBtn" class="btn">Next</button>
+          <button id="submitBtn" class="primary">Submit</button>
+          <button class="link" data-view="quizzes">Exit</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="resultsView" class="hidden">
+      <div class="card">
+        <h2>Results</h2>
+        <div id="resultsSummary"></div>
+        <div id="review"></div>
+        <div class="row" style="margin-top:12px">
+          <button class="btn" data-view="quizzes">Back to quizzes</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="scoresView" class="hidden">
+      <div class="card">
+        <h2>Score history</h2>
+        <div id="scoresList" class="list"></div>
+      </div>
+    </section>
+
+    <footer class="footer">Local-only demo. Data is kept in the browser.</footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
